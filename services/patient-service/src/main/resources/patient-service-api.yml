@@ -1,0 +1,35 @@
+openapi: 3.0.3
+info:
+  title: Patient Service v1
+  description: |-
+    API for Patient Service
+  termsOfService: http://swagger.io/terms/
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+paths:
+components:
+  schemas:
+    ValidatePatientCommand:
+      type: object
+      properties:
+        id:
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+    PatientValidatedEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        isClient:
+          type: boolean

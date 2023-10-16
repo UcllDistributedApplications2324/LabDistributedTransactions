@@ -1,0 +1,27 @@
+openapi: 3.0.3
+info:
+  title: Room Service v1
+  description: |-
+    API for Room Service
+  termsOfService: http://swagger.io/terms/
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+paths:
+components:
+  schemas:
+    ReserveRoomCommand:
+      type: object
+      properties:
+        day:
+          type: string
+          format: date
+    RoomReservedEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+        day:
+          type: string
+          format: date

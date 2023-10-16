@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Appointment Service v1
+  description: |-
+    API for Appointment Service
+  termsOfService: http://swagger.io/terms/
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+tags:
+  - name: Appointment
+    description: moment when a patient sees a specialist
+paths:
+  /api/v1/appointment-request:
+    post:
+      tags:
+        - Appointment
+      description: Register a new request for an appointment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiAppointmentRequest'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiAppointmentRequestResponse'
+        '500':
+          description: Internal Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /api/v1/appointment-confirmation:
+    post:
+      tags:
+        - Appointment
+      description: Accept or Decline a previously requested appointment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiAppointmentConfirmation'
+      responses:
+        '200':
+          description: Successful operation
+        '500':
+          description: Internal Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+components:
+  schemas:
+    ApiAppointmentRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+        patientFirstName:
+          type: string
+          example: 'Emily'
+        patientLastName:
+          type: string
+          example: 'Williams'
+        neededExpertise:
+          type: string
+          example: 'Gastrology'
+        preferredDay:
+          type: string
+          format: date
+          example: '2023-09-21'
+    ApiAppointmentRequestResponse:
+      type: object
+      properties:
+        appointmentRequestNumber:
+          type: string
+          example: "23-11-5678"
+    ApiAppointmentConfirmation:
+      type: object
+      properties:
+        appointRequestNumber:
+          type: string
+          example: "23-11-5678"
+        acceptProposedAppointment:
+          type: boolean
+    ApiError:
+      type: object
+      properties:
+        code:
+          type: string
+          description: 'Functional code specifying the error'
+          example: '2300'
+        message:
+          type: string
+          description: 'Brief explanation about the error, for more information consult the Doctor Service team'
+    AppointmentCreatedEvent:
+      type: object
+      properties:
+        appointmentRequestNumber:
+          type: string
+          example: "23-11-5678"
+        dayOfAppointment:
+          type: string
+          format: date
+        patientEmail:
+          type: string
+        patientId:
+          type: integer
+        doctorId:
+          type: integer
+        roomId:
+          type: integer
+        accountId:
+          type: integer
+    AppointmentCreationFailedEvent:
+      type: object
+      properties:
+        appointmentRequestNumber:
+          type: string
+          example: "23-11-5678"
+        error:
+          type: string
