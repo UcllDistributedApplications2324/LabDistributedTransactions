@@ -10,4 +10,12 @@ public class AccountingService {
 
         return false;
     }
+
+    public boolean closeAccount(Long patientId) {
+        if (Math.random() > 0.1) {
+            return true;
+        }
+
+        return false;
+    }
 }

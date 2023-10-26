@@ -23,6 +23,11 @@ public class RoomService {
         return -1;
     }
 
+    public Integer releaseRoom(LocalDate day, Integer roomId) {
+        getRoomReservations(day).put(roomId, false);
+        return roomId;
+    }
+
     // ---- Internal Code to Simulate Rooms in a Clinic ----
 
     // There are 3 rooms in the clinic, every room is booked or unbooked for a full day
