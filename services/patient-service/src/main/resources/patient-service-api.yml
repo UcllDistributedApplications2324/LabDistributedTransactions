@@ -14,7 +14,9 @@ components:
     ValidatePatientCommand:
       type: object
       properties:
-        id:
+        appointmentId:
+          type: integer
+        patientId:
           type: integer
         firstName:
           type: string
@@ -23,7 +25,9 @@ components:
     PatientValidatedEvent:
       type: object
       properties:
-        id:
+        appointmentId:
+          type: integer
+        patientId:
           type: integer
         firstName:
           type: string

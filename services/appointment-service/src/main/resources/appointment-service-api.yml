@@ -61,14 +61,8 @@ components:
     ApiAppointmentRequest:
       type: object
       properties:
-        id:
+        patientId:
           type: integer
-        patientFirstName:
-          type: string
-          example: 'Emily'
-        patientLastName:
-          type: string
-          example: 'Williams'
         neededExpertise:
           type: string
           example: 'Gastrology'

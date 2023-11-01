@@ -1,0 +1,20 @@
+openapi: 3.0.3
+info:
+  title: Notification Service v1
+  description: |-
+    API for Notification Service
+  termsOfService: http://swagger.io/terms/
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+paths:
+components:
+  schemas:
+    SendEmailCommand:
+      type: object
+      properties:
+        recipient:
+          type: string
+        message:
+          type: string

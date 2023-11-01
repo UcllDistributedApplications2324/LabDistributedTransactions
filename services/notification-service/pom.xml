@@ -109,7 +109,7 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<inputSpec>${project.basedir}/src/main/resources/appointment-service-api.yml</inputSpec>
+							<inputSpec>${project.basedir}/src/main/resources/notification-service-api.yml</inputSpec>
 							<generatorName>java</generatorName>
 							<library>resttemplate</library>
 							<generateApis>true</generateApis>
@@ -121,7 +121,7 @@
 							<skipValidateSpec>true</skipValidateSpec>
 							<generateSupportingFiles>false</generateSupportingFiles>
 							<generateApis>false</generateApis>
-							<modelPackage>be.ucll.da.notificationservice.client.appointment.api.model</modelPackage>
+							<modelPackage>be.ucll.da.notificationservice.api.messaging.model</modelPackage>
 
 							<configOptions>
 								<dateLibrary>java8</dateLibrary>

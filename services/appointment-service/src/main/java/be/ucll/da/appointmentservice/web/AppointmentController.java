@@ -22,11 +22,15 @@ public class AppointmentController implements AppointmentApiDelegate {
 
     @Override
     public ResponseEntity<ApiAppointmentRequestResponse> apiV1AppointmentRequestPost(ApiAppointmentRequest apiAppointmentRequest) {
-        throw new NotYetImplementedException("Implement Me!");
+        ApiAppointmentRequestResponse response = new ApiAppointmentRequestResponse();
+        response.appointmentRequestNumber(appointmentService.registerRequest(apiAppointmentRequest));
+
+        return ResponseEntity.ok(response);
     }
 
     @Override
     public ResponseEntity<Void> apiV1AppointmentConfirmationPost(ApiAppointmentConfirmation apiAppointmentConfirmation) {
-        throw new NotYetImplementedException("Implement Me!");
+        appointmentService.finalizeAppointment(apiAppointmentConfirmation);
+        return ResponseEntity.ok().build();
     }
 }

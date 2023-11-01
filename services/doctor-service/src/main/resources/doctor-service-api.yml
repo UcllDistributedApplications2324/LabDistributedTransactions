@@ -14,12 +14,15 @@ components:
     CheckDoctorEmployedCommand:
       type: object
       properties:
+        appointmentId:
+          type: integer
         fieldOfExpertise:
           type: string
-          format: date
     DoctorsOnPayrollEvent:
       type: object
       properties:
+        appointmentId:
+          type: integer
         fieldOfExpertise:
           type: string
         doctors:
@@ -31,7 +34,6 @@ components:
       properties:
         id:
           type: integer
-          format: int64
           example: 10
         firstName:
           type: string

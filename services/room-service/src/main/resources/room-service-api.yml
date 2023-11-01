@@ -14,14 +14,28 @@ components:
     ReserveRoomCommand:
       type: object
       properties:
+        appointmentId:
+          type: integer
+        day:
+          type: string
+          format: date
+    ReleaseRoomCommand:
+      type: object
+      properties:
+        roomId:
+          type: integer
         day:
           type: string
           format: date
     RoomReservedEvent:
       type: object
       properties:
-        id:
+        appointmentId:
           type: integer
         day:
           type: string
           format: date
+        roomAvailable:
+          type: boolean
+        id:
+          type: integer

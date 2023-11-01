@@ -14,6 +14,8 @@ components:
     OpenPatientAccountCommand:
       type: object
       properties:
+        appointmentId:
+          type: integer
         patientId:
           type: integer
         doctorId:
@@ -23,9 +25,18 @@ components:
         dayOfAppointment:
           type: string
           format: date
+    ClosePatientAccountCommand:
+      type: object
+      properties:
+        appointmentId:
+          type: integer
+        patientId:
+          type: integer
     PatientAccountCreatedEvent:
       type: object
       properties:
+        appointmentId:
+          type: integer
         patientId:
           type: integer
         dayOfAppointment:
@@ -36,6 +47,8 @@ components:
     PatientAccountNotCreatedEvent:
       type: object
       properties:
+        appointmentId:
+          type: integer
         patientId:
           type: integer
         dayOfAppointment:
