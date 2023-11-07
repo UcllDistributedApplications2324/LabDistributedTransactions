@@ -1,21 +1,22 @@
 package be.ucll.da.accountingservice.domain;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AccountingService {
 
-    // Returns true if successful, false if patient is not insured
-    public boolean openAccount(Long patientId) {
-        if (Math.random() > 0.7) {
-            return true;
+    private Integer accountId = 0;
+
+    // Returns -1 if  not successful and patient is not insured, accountId otherwise
+    public Integer openAccount(Integer patientId) {
+        if (Math.random() > 0.3) {
+            return ++accountId;
         }
 
-        return false;
+        return -1;
     }
 
-    public boolean closeAccount(Long patientId) {
-        if (Math.random() > 0.1) {
-            return true;
-        }
-
-        return false;
+    public boolean closeAccount(Integer accountId) {
+       return true;
     }
 }

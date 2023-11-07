@@ -23,17 +23,17 @@ public class AppointmentService {
     public String registerRequest(ApiAppointmentRequest request) {
         var appointment = new Appointment(request.getPatientId(), request.getPreferredDay(), request.getNeededExpertise());
 
-        requestSaga.executeSaga(appointment);
         appointment = repository.save(appointment);
+        requestSaga.executeSaga(appointment);
 
         return appointment.getId().toString();
     }
 
     public void finalizeAppointment(ApiAppointmentConfirmation apiAppointmentConfirmation) {
         if (apiAppointmentConfirmation.getAcceptProposedAppointment()) {
-            requestSaga.accept(Integer.valueOf(apiAppointmentConfirmation.getAppointRequestNumber()));
+            requestSaga.accept(Integer.valueOf(apiAppointmentConfirmation.getAppointmentRequestNumber()));
         } else {
-            requestSaga.decline(Integer.valueOf(apiAppointmentConfirmation.getAppointRequestNumber()));
+            requestSaga.decline(Integer.valueOf(apiAppointmentConfirmation.getAppointmentRequestNumber()));
         }
     }
 }

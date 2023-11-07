@@ -79,7 +79,7 @@ components:
     ApiAppointmentConfirmation:
       type: object
       properties:
-        appointRequestNumber:
+        appointmentRequestNumber:
           type: string
           example: "23-11-5678"
         acceptProposedAppointment:

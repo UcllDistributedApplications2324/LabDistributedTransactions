@@ -22,6 +22,8 @@ components:
     ReleaseRoomCommand:
       type: object
       properties:
+        appointmentId:
+          type: integer
         roomId:
           type: integer
         day:
@@ -37,5 +39,15 @@ components:
           format: date
         roomAvailable:
           type: boolean
-        id:
+        roomId:
           type: integer
+    RoomReleasedEvent:
+      type: object
+      properties:
+        appointmentId:
+          type: integer
+        roomId:
+          type: integer
+        day:
+          type: string
+          format: date

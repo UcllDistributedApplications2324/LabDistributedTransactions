@@ -1,5 +1,11 @@
 package be.ucll.da.appointmentservice;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.util.StdDateFormat;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -12,7 +18,15 @@ public class RabbitMqConfig {
 
     @Bean
     public Jackson2JsonMessageConverter converter() {
-        return new Jackson2JsonMessageConverter();
+        ObjectMapper mapper =
+                new ObjectMapper()
+                        .registerModule(new ParameterNamesModule())
+                        .registerModule(new Jdk8Module())
+                        .registerModule(new JavaTimeModule());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        mapper.setDateFormat(new StdDateFormat());
+
+        return new Jackson2JsonMessageConverter(mapper);
     }
 
     @Bean
@@ -54,11 +68,6 @@ public class RabbitMqConfig {
     }
 
     @Bean
-    public Declarables createReleaseBookQueue(){
-        return new Declarables(new Queue("q.room-service.release-room"));
-    }
-
-    @Bean
     public Declarables createRoomBookedExchange(){
         return new Declarables(
                 new FanoutExchange("x.room-bookings"),
@@ -67,13 +76,19 @@ public class RabbitMqConfig {
     }
 
     @Bean
-    public Declarables createOpenAccountQueue(){
-        return new Declarables(new Queue("q.account-service.open-account"));
+    public Declarables createReleaseRoomQueue(){
+        return new Declarables(new Queue("q.room-service.release-room"));
     }
 
     @Bean
-    public Declarables createCloseAccountQueue(){
-        return new Declarables(new Queue("q.account-service.close-account"));
+    public Declarables createRoomReleasedExchange(){
+        return new Declarables(
+                new FanoutExchange("x.room-releases"));
+    }
+
+    @Bean
+    public Declarables createOpenAccountQueue(){
+        return new Declarables(new Queue("q.account-service.open-account"));
     }
 
     @Bean
@@ -82,6 +97,17 @@ public class RabbitMqConfig {
                 new FanoutExchange("x.account-openings"),
                 new Queue("q.account-openings.appointment-service" ),
                 new Binding("q.account-openings.appointment-service", Binding.DestinationType.QUEUE, "x.account-openings", "account-openings.appointment-service", null));
+    }
+
+    @Bean
+    public Declarables createCloseAccountQueue(){
+        return new Declarables(new Queue("q.account-service.close-account"));
+    }
+
+    @Bean
+    public Declarables createAccountTerminationsExchange(){
+        return new Declarables(
+                new FanoutExchange("x.account-terminations"));
     }
 
     @Bean

@@ -1,14 +1,20 @@
 package be.ucll.da.patientservice.domain;
 
+import com.github.javafaker.Faker;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PatientService {
 
-    public Patient validatePatient(Long id, String firstName, String lastName) {
+    private final Faker faker = new Faker();
+
+    public Patient validatePatient(Integer id) {
+        String firstName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+
         String email = firstName + "." + lastName + "@google.com";
 
-        if (Math.random() > 0.7) {
+        if (Math.random() > 0.3) {
             return new Patient(id, firstName, lastName, email, true);
         }
 

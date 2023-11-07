@@ -32,6 +32,8 @@ components:
           type: integer
         patientId:
           type: integer
+        accountId:
+          type: integer
     PatientAccountCreatedEvent:
       type: object
       properties:
@@ -42,17 +44,18 @@ components:
         dayOfAppointment:
           type: string
           format: date
+        accountCreated:
+          type: boolean
         accountId:
           type: integer
-    PatientAccountNotCreatedEvent:
+        error:
+          type: string
+    PatientAccountTerminatedEvent:
       type: object
       properties:
         appointmentId:
           type: integer
         patientId:
           type: integer
-        dayOfAppointment:
-          type: string
-          format: date
-        error:
-          type: string
+        accountId:
+          type: integer

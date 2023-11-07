@@ -18,10 +18,6 @@ components:
           type: integer
         patientId:
           type: integer
-        firstName:
-          type: string
-        lastName:
-          type: string
     PatientValidatedEvent:
       type: object
       properties:

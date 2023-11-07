@@ -22,12 +22,14 @@ public class DoctorService {
 
     private List<Doctor> getAllDoctors() {
         List<Doctor> doctors = new ArrayList<>();
-        doctors.add(new Doctor(1L, "Cardiologie", "Juliette",
+        doctors.add(new Doctor(1, "Cardiologie", "Juliette",
                 "Tucker", 32, "Rue du Centre 259, 3000 Leuven, Belgium"));
-        doctors.add(new Doctor(2L, "Dermatologie", "Preston",
+        doctors.add(new Doctor(2, "Dermatologie", "Preston",
                 "Mueller", 45, "Avenue Emile Vandervelde 465, 3000 Leuven, Belgium"));
-        doctors.add(new Doctor(1L, "Gynaecologie", "Katrina",
+        doctors.add(new Doctor(3, "Gynaecologie", "Katrina",
                 "Mendoza", 67, "Kapelaniestraat 94 22, 3000 Leuven, Belgium"));
+        doctors.add(new Doctor(4, "Neurologie", "Maria",
+                "Piron", 82, "Naamsestraat 128, 3000 Leuven, Belgium"));
 
         return doctors;
     }

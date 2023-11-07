@@ -7,6 +7,8 @@ import be.ucll.da.appointmentservice.client.notification.api.model.SendEmailComm
 import be.ucll.da.appointmentservice.client.patient.api.model.ValidatePatientCommand;
 import be.ucll.da.appointmentservice.client.room.api.model.ReleaseRoomCommand;
 import be.ucll.da.appointmentservice.client.room.api.model.ReserveRoomCommand;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,6 +17,8 @@ import java.time.LocalDate;
 
 @Component
 public class RabbitMqMessageSender {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(RabbitMqMessageSender.class);
 
     private final RabbitTemplate rabbitTemplate;
 
@@ -44,8 +48,9 @@ public class RabbitMqMessageSender {
         sendToQueue("q.room-service.book-room", command);
     }
 
-    public void sendReleaseRoomCommand(Integer roomId, LocalDate preferredDay) {
+    public void sendReleaseRoomCommand(Integer appointmentId, Integer roomId, LocalDate preferredDay) {
         var command = new ReleaseRoomCommand();
+        command.appointmentId(appointmentId);
         command.roomId(roomId);
         command.day(preferredDay);
         sendToQueue("q.room-service.release-room", command);
@@ -61,10 +66,11 @@ public class RabbitMqMessageSender {
         sendToQueue("q.account-service.open-account", command);
     }
 
-    public void sendCloseAccountCommand(Integer id, Integer patientId) {
+    public void sendCloseAccountCommand(Integer id, Integer patientId, Integer accountId) {
         var command = new ClosePatientAccountCommand();
         command.appointmentId(id);
         command.patientId(patientId);
+        command.setAccountId(accountId);
         sendToQueue("q.account-service.close-account", command);
     }
 
@@ -76,6 +82,8 @@ public class RabbitMqMessageSender {
     }
 
     private void sendToQueue(String queue, Object message) {
+        LOGGER.info("Sending message: " + message);
+
         this.rabbitTemplate.convertAndSend(queue, message);
     }
 }

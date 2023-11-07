@@ -1,9 +1,6 @@
 package be.ucll.da.appointmentservice.domain.appointment;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -27,6 +24,9 @@ public class Appointment {
 
     private Integer doctor;
 
+    private Integer accountId;
+
+    @Enumerated(EnumType.STRING)
     private AppointmentStatus status;
 
     protected Appointment() {}
@@ -70,6 +70,10 @@ public class Appointment {
         return doctor;
     }
 
+    public Integer getAccountId() {
+        return accountId;
+    }
+
     public AppointmentStatus getStatus() {
         return status;
     }
@@ -107,7 +111,8 @@ public class Appointment {
         this.status = AppointmentStatus.NO_ROOM;
     }
 
-    public void finalizeAppointment() {
+    public void finalizeAppointment(Integer accountId) {
+        this.accountId = accountId;
         this.status = AppointmentStatus.REQUEST_REGISTERED;
     }
 
