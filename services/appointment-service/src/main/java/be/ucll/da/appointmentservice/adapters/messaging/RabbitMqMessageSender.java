@@ -1,4 +1,4 @@
-package be.ucll.da.appointmentservice.messaging;
+package be.ucll.da.appointmentservice.adapters.messaging;
 
 import be.ucll.da.appointmentservice.client.accounting.api.model.ClosePatientAccountCommand;
 import be.ucll.da.appointmentservice.client.accounting.api.model.OpenPatientAccountCommand;

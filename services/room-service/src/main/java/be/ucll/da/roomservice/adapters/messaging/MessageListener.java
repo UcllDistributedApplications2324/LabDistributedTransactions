@@ -1,18 +1,17 @@
-package be.ucll.da.roomservice.messaging;
+package be.ucll.da.roomservice.adapters.messaging;
 
 import be.ucll.da.roomservice.api.messaging.model.ReleaseRoomCommand;
 import be.ucll.da.roomservice.api.messaging.model.ReserveRoomCommand;
 import be.ucll.da.roomservice.api.messaging.model.RoomReleasedEvent;
 import be.ucll.da.roomservice.api.messaging.model.RoomReservedEvent;
 import be.ucll.da.roomservice.domain.RoomService;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.transaction.Transactional;
 
 @Component
 @Transactional

@@ -5,7 +5,7 @@ import be.ucll.da.appointmentservice.client.doctor.api.model.DoctorOnPayroll;
 import be.ucll.da.appointmentservice.client.doctor.api.model.DoctorsOnPayrollEvent;
 import be.ucll.da.appointmentservice.client.patient.api.model.PatientValidatedEvent;
 import be.ucll.da.appointmentservice.client.room.api.model.RoomReservedEvent;
-import be.ucll.da.appointmentservice.messaging.RabbitMqMessageSender;
+import be.ucll.da.appointmentservice.adapters.messaging.RabbitMqMessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

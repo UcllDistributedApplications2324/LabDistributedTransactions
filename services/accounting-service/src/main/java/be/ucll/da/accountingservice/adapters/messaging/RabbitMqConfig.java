@@ -1,4 +1,4 @@
-package be.ucll.da.roomservice;
+package be.ucll.da.accountingservice.adapters.messaging;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

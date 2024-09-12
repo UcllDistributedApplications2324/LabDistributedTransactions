@@ -1,4 +1,4 @@
-package be.ucll.da.appointmentservice;
+package be.ucll.da.appointmentservice.adapters.messaging;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

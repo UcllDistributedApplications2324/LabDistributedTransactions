@@ -1,11 +1,10 @@
-package be.ucll.da.appointmentservice.web;
+package be.ucll.da.appointmentservice.adapters.rest.incoming;
 
 import be.ucll.da.appointmentservice.api.AppointmentApiDelegate;
 import be.ucll.da.appointmentservice.api.model.ApiAppointmentConfirmation;
 import be.ucll.da.appointmentservice.api.model.ApiAppointmentRequest;
 import be.ucll.da.appointmentservice.api.model.ApiAppointmentRequestResponse;
 import be.ucll.da.appointmentservice.domain.appointment.AppointmentService;
-import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;

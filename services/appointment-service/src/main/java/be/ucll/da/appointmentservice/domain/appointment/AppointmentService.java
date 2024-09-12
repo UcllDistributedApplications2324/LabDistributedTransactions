@@ -2,10 +2,10 @@ package be.ucll.da.appointmentservice.domain.appointment;
 
 import be.ucll.da.appointmentservice.api.model.ApiAppointmentConfirmation;
 import be.ucll.da.appointmentservice.api.model.ApiAppointmentRequest;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 
 @Service
 @Transactional

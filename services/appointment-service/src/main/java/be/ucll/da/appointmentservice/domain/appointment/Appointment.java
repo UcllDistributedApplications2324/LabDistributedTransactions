@@ -1,6 +1,6 @@
 package be.ucll.da.appointmentservice.domain.appointment;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
