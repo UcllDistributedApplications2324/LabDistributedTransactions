@@ -1,4 +1,4 @@
-package be.ucll.da.appointmentservice.messaging;
+package be.ucll.da.appointmentservice.adapters.messaging;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

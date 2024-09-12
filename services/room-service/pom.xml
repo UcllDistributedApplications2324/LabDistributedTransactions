@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.16</version>
+        <version>3.3.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>be.ucll.da</groupId>
@@ -15,7 +15,7 @@
     <description>room-service</description>
     <properties>
         <java.version>17</java.version>
-        <spring-cloud.version>2021.0.8</spring-cloud.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
     </properties>
 
     <dependencyManagement>
@@ -52,11 +52,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
@@ -77,17 +72,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.7.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>1.6.11</version>
-        </dependency>
-        <dependency> <!-- For Javax Nullable -->
-            <groupId>com.github.spotbugs</groupId>
-            <artifactId>spotbugs-annotations</artifactId>
-            <version>4.7.3</version>
+            <version>1.8.0</version>
         </dependency>
     </dependencies>
 
@@ -102,7 +87,7 @@
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>5.3.0</version>
+                <version>7.8.0</version>
                 <executions>
                     <execution>
                         <goals>
@@ -112,7 +97,7 @@
                             <inputSpec>${project.basedir}/src/main/resources/room-service-api.yml</inputSpec>
                             <generatorName>java</generatorName>
                             <library>resttemplate</library>
-                            <generateApis>true</generateApis>
+                            <generateApis>false</generateApis>
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateApiTests>false</generateApiTests>
                             <generateModels>true</generateModels>
@@ -120,7 +105,6 @@
                             <generateModelTests>false</generateModelTests>
                             <skipValidateSpec>true</skipValidateSpec>
                             <generateSupportingFiles>false</generateSupportingFiles>
-                            <generateApis>false</generateApis>
                             <modelPackage>be.ucll.da.roomservice.api.messaging.model</modelPackage>
 
                             <configOptions>
@@ -132,6 +116,7 @@
                                 <useOptional>false</useOptional>
                                 <serializableModel>true</serializableModel>
                                 <openApiNullable>false</openApiNullable>
+                                <useJakartaEe>true</useJakartaEe> <!-- javax.* to jakarta.* -->
                             </configOptions>
                         </configuration>
                     </execution>

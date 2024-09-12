@@ -1,10 +1,9 @@
-package be.ucll.da.patientservice.messaging;
+package be.ucll.da.patientservice.adapters.messaging;
 
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
-import javax.transaction.Transactional;
 
 @Component
 @Transactional

@@ -1,10 +1,9 @@
-package be.ucll.da.accountingservice.messaging;
+package be.ucll.da.appointmentservice.adapters.messaging;
 
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
-import javax.transaction.Transactional;
 
 @Component
 @Transactional

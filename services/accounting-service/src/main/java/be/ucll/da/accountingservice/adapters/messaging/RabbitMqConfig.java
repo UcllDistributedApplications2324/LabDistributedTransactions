@@ -1,4 +1,4 @@
-package be.ucll.da.doctorservice;
+package be.ucll.da.accountingservice.adapters.messaging;
 
 import org.springframework.context.annotation.Configuration;
 

@@ -1,4 +1,4 @@
-package be.ucll.da.roomservice;
+package be.ucll.da.patientservice.adapters.messaging;
 
 import org.springframework.context.annotation.Configuration;
 
